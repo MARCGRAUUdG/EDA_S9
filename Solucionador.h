@@ -6,21 +6,15 @@
 #include "Candidats.h"
 #include <iostream>
 
-using namespace std;
-
 class Solucionador {
 
 public:
-
-    Solucionador();
-    // Pre:--
-    // Post: Inicialitza el Solucionador
 
     bool solucionar(Solucio & sol);
     // Pre: cert
     // Post: retorna si ha trobat o no la solucio (i la guarda si l’ha trobada)
 
-    void trobarUnaSolucio(Solucio & sol);
+    void trobarUnaSolucio();
     // Pre: Sol inicialitzada i ant valida
     // Post: No encertat o encertat ^ sol és completa
 
@@ -30,8 +24,8 @@ public:
 
 private:
 
-    bool _encertat;
-    Solucio _S;
+    bool _acabat;
+    Solucio _Sol;
 
 };
 

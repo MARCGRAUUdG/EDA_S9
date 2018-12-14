@@ -1,54 +1,43 @@
 #include "Solucionador.h"
+#include <iostream>
 
-Solucionador::Solucionador() {
+void Solucionador::trobarUnaSolucio() {
 
-    _encertat=false;
-
-}
-
-void Solucionador::trobarUnaSolucio(Solucio & sol) {
-
-    Candidats iCan=sol.inicialitzarCandidats();
-    while ( ! iCan.esFi() )
+    Candidats iCan=_Sol.inicialitzarCandidats();
+    while ( ! iCan.esFi() && !_acabat )
     {
-        if(sol.Acceptable(iCan))
+        if(_Sol.Acceptable(iCan))
         {
-
-            sol.anotarCandidat(iCan);
-            if (! sol.esCompleta())
+            _Sol.anotarCandidat(iCan);
+            if (! _Sol.esCompleta())
             {
-                trobarUnaSolucio(sol);
-                if (! _encertat)
+                trobarUnaSolucio();
+                if (! _acabat)
                 {
-                    sol.desAnotarCandidat(iCan);
+                    _Sol.desAnotarCandidat(iCan);
                 }
-
             }
             else
             {
-                _encertat=true;
-
+                _acabat=true;
             }
         }
         iCan.seguent();
-
     }
 }
 
-
-
 bool Solucionador::solucionar(Solucio &sol) {
 
-    _encertat=false;
-    _S=sol;
-    trobarUnaSolucio(_S);
+    _acabat=false;
+    _Sol=sol;
+    trobarUnaSolucio();
 
-    return _encertat;
+    return _acabat;
 }
 
 Solucio Solucionador::getSolucio() {
 
-    return _S;
+    return _Sol;
 
 }
 

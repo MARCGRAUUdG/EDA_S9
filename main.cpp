@@ -8,17 +8,16 @@
 int main() {
 
     std::cout << "Entra el nom del fitxer d'entrada:" << std::endl;
-    string str;
+    std::string str;
     std::cin >> str;
     char * cstr = new char [str.size()+1];
     std::strcpy(cstr, str.c_str());
 
     Solucio s=Solucio(cstr);
-    Posicio inici(1,1);
     Solucionador backtracking;
-    backtracking.solucionar(s,inici);
+    backtracking.solucionar(s);
 
-    if (backtracking.solucionar(s,inici))
+    if (backtracking.solucionar(s))
     {
         s=backtracking.getSolucio();
         s.mostrarSolucio();

@@ -11,29 +11,28 @@
 #include <list>
 #include <map>
 
-using namespace std;
+typedef float etiqueta;
+//typedef string etiqueta;
+const float etiqNula = -1;
+//const string etiqNula ="";
 
 class Solucio {
 
 public:
-    typedef float etiqueta;
-//typedef string etiqueta;
-    const float etiqNula = -1;
-//const string etiqNula ="";
 
     Solucio();
     //Pre: --
     //Post: Inicialitza la mida i el nivell de la solucio a 0
 
-    Solucio(const char *nomFitxer, bool dirigit);
+    Solucio(const char *nomFitxer);
     //Pre:--
     //Post: Inicialitza la solucio amb les dades del fitxer de nom "nomFitxer"
 
-    Candidats inicialitzarCandidats(int ant);
+    Candidats inicialitzarCandidats() const;
     // Pre: --
     // Post: Retorna els candidats del nivell actual
 
-    bool Acceptable(Candidats & iCan);
+    bool Acceptable(Candidats & iCan) const;
     // Pre: --
     // Post: Retorna cert si el candidat es pot afegir a la solució
 
@@ -61,16 +60,14 @@ public:
 
 private:
     int _mida;
+    float _cost;
+    int _midaGraf;
 
     std::vector<int> _agafats;
     std::vector< std::map<int, etiqueta> > _arestes;
-    bool _dirigit;
-    int _nivell;
-    int pesMax;
 
     bool esValid(int v) const;
 
 };
-
 
 #endif //EDA_S9_SOLUCIO_H

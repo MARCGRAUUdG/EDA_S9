@@ -8,29 +8,21 @@
 
 #include <vector>
 
-using namespace std;
-
 class Candidats {
 
 public:
 
-    Candidats();
-    // Pre:--
-    // Post: Inicialitza per defecte
-
-    Candidats(int ant);
+    Candidats(int vertex, int total_vertex);
     // Pre: n>0
     // Post: S’ha inicialitzat el candidat amb la posicio anterior i el nombre de salts
 
-    bool esFi();
+    bool esFi() const;
     // Pre: --
     // Post: Retorna cert si ja no queden candidats
 
-    int cActual();
+    int cActual() const;
     // Pre:-- (Error: no hi ha candidat)
     // Post: Actualitza el candidat actual, el guarda i el retorna
-
-    int cAnterior();
 
     void seguent();
     // Pre: -- (Error: no hi ha candidat)
@@ -40,9 +32,7 @@ public:
 private:
 
     int _iCan;
-    int _nSalts;
-    int _CAnt;
-    int _Cact;
+    int _max;
 
 };
 
